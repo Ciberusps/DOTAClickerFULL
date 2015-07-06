@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b88a79ae6497e6f46ba9ab2114d98352
+timeCreated: 1434793975
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - healthBarController: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - gold_bag: {fileID: 108848, guid: 6c7a3cc8f2b6fd1498685b3fdb28a5ea, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
