@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
 
     public Animator anim;
     public GameObject gold_bag; //Префаб мешка с золотом
+    public GameObject damage_text;
+
     HealthBarController healthBarController; //Скриптовый HealthBar
     GameObject temp; //Временный объект для создания мешков
     PlayerController playerController;
@@ -45,6 +47,11 @@ public class EnemyHealth : MonoBehaviour
         if (!enemyManager.enemyDead)
         {
             anim.SetTrigger("isDamaged");
+
+            GameObject temp = (GameObject)Instantiate(damage_text, new Vector3(Input.mousePosition.x, Input.mousePosition.y), Quaternion.identity);
+            temp.GetComponentInChildren<Text>().text = "-" + clickDamage.clickDamageValue.ToString();
+            Destroy(temp, 0.4f);
+
             anim.SetTrigger("isIdle");
         }
 
@@ -126,5 +133,8 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= playerController.currentDPS * Time.fixedDeltaTime;
     }
 
-    
+    public void OverpowerSkill()
+    {
+        InvokeRepeating("TakeDamage", 2, 0.2f);
+    }
 }

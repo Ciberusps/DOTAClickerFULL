@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{9AB5472D-974F-33EF-356E-6DDFB6F2D2CC}</ProjectGuid>
+	<ProjectGuid>{74C552F7-8D79-37FD-876B-395ED9879584}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -61,7 +61,9 @@
      <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\GoldBagController.cs" />
      <Compile Include="Assets\Scripts\HealthBarController.cs" />
+     <Compile Include="Assets\Scripts\Overpower.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Skills.cs" />
      <Compile Include="Assets\Scripts\СustomCursor.cs" />
      <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Game Jam Menu Template\GameJamTemplateReadMe.txt" />

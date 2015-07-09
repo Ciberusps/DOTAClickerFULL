@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 61edfcc9a813df34282281675c5802b2
+timeCreated: 1436303246
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DamageFont_0
+    21300002: DamageFont_1
+    21300004: DamageFont_2
+    21300006: DamageFont_3
+    21300008: DamageFont_4
+    21300010: DamageFont_5
+    21300012: DamageFont_6
+    21300014: DamageFont_7
+    21300016: DamageFont_8
+    21300018: DamageFont_9
+    21300020: DamageFont_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DamageFont_0
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 189
+        width: 32
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 171
+        width: 54
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 173
+        width: 34
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_3
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 173
+        width: 50
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_4
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 171
+        width: 49
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_5
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 173
+        width: 55
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_6
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 61
+        width: 50
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_7
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 61
+        width: 52
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_8
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 62
+        width: 51
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_9
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 61
+        width: 53
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DamageFont_10
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 61
+        width: 52
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
