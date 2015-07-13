@@ -56,7 +56,9 @@
      <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
      <Compile Include="Assets\Scripts\ClickDamage.cs" />
      <Compile Include="Assets\Scripts\DPS.cs" />
+     <Compile Include="Assets\Scripts\DPSTemp.cs" />
      <Compile Include="Assets\Scripts\EXPController.cs" />
+     <Compile Include="Assets\Scripts\Enemies.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\GoldBagController.cs" />
