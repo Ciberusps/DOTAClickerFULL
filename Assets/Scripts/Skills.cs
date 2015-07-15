@@ -10,11 +10,13 @@ public class Skills : MonoBehaviour
     EnemyManager enemyManager;
     EnemyHealth enemyHealth;
     PlayerController playerController;
+    EXPController expController;
 
-	void Start () 
+    void Start () 
     {
         enemyManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyManager>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        expController = GameObject.Find("EXPSlider").GetComponent<EXPController>();
     }
 	
 	void Update () 
@@ -30,6 +32,10 @@ public class Skills : MonoBehaviour
             if (skill.currentTimeOfUsing <= 0)
             {
                 skill.IsUsing = false;
+
+                Color color = skill.Used.color;
+                color.a = 0f;
+                skill.Used.color = color;
             }
 
             if (skill.currentCoolDown <= 0)
@@ -69,11 +75,16 @@ public class Skills : MonoBehaviour
                 skill.CoolDownText.text = "";
             }
 
+            SkillNotLearning();
+
             if (skill.Learning)
             {
                 skill.LearningOn();
             }
-
+            else
+            {
+                skill.LearningOff();
+            }
         }
         
     }
@@ -92,109 +103,161 @@ public class Skills : MonoBehaviour
         public Image IconHighlighted;
         public Image Slot;
         public Image Border;
-        public List<Image> level1;
-        public List<Image> level2;
-        public List<Image> level3;
-        public List<Image> level4;
+        public Image Used;
+        public Image Learn;
+        public List<MultiDimensionalImage> level; 
         public Text CoolDownText;
         public GameObject Log;
+        public EXPController expController;
 
         public bool OnCoolDown;
         public bool IsUsing;
         public bool Learning;
+        public bool SkillChoosing;
 
         public void LearningOn()
-        {
-            //level1
-            Color color = level1[0].color;
-            color.a = 0f;
-            level1[0].color = color;
+       {
+            if (currentLevel < 4)
+            {
+                Color color = level[currentLevel + 1].StateImage[0].color;
+                color.a = 0f;
+                level[currentLevel + 1].StateImage[0].color = color;
 
-            color = level1[1].color;
-            color.a = 1f;
-            level1[1].color = color;
+                color = level[currentLevel + 1].StateImage[1].color;
+                color.a = 1f;
+                level[currentLevel + 1].StateImage[1].color = color;
 
-            color = level1[2].color;
-            color.a = 0f;
-            level1[2].color = color;
+                color = level[currentLevel + 1].StateImage[2].color;
+                color.a = 0f;
+                level[currentLevel + 1].StateImage[2].color = color;
 
-            //level2
-            color = level2[0].color;
-            color.a = 0f;
-            level2[0].color = color;
-
-            color = level2[1].color;
-            color.a = 1f;
-            level2[1].color = color;
-
-            color = level2[2].color;
-            color.a = 0f;
-            level2[2].color = color;
-
-            //level3
-            color = level3[0].color;
-            color.a = 0f;
-            level3[0].color = color;
-
-            color = level3[1].color;
-            color.a = 1f;
-            level3[1].color = color;
-
-            color = level3[2].color;
-            color.a = 0f;
-            level3[2].color = color;
-
-            //level4
-            color = level4[0].color;
-            color.a = 0f;
-            level4[0].color = color;
-
-            color = level4[1].color;
-            color.a = 1f;
-            level4[1].color = color;
-
-            color = level4[2].color;
-            color.a = 0f;
-            level4[2].color = color;
+                color = Learn.color;
+                color.a = 1f;
+                Learn.color = color;
+            }
         }
 
         public void LearningOff()
         {
-            Color color = level1[0].color;
-            color.a = 1f;
-            level1[0].color = color;
+            if (currentLevel < 4)
+            {
+                Color color = level[currentLevel + 1].StateImage[0].color;
+                color.a = 1f;
+                level[currentLevel + 1].StateImage[0].color = color;
 
-            color = level1[1].color;
-            color.a = 0f;
-            level1[1].color = color;
+                color = level[currentLevel + 1].StateImage[1].color;
+                color.a = 0f;
+                level[currentLevel + 1].StateImage[1].color = color;
 
-            color = level1[2].color;
-            color.a = 0f;
-            level1[2].color = color;
+                color = level[currentLevel + 1].StateImage[2].color;
+                color.a = 0f;
+                level[currentLevel + 1].StateImage[2].color = color;
+
+                color = Learn.color;
+                color.a = 0f;
+                Learn.color = color;
+            }
+        }
+
+        public void LearnChoosed()
+        {
+            if (currentLevel < 4)
+            {
+                SkillChoosing = false;
+                Learning = false;
+
+                Color color = level[currentLevel + 1].StateImage[0].color;
+                color.a = 0f;
+                level[currentLevel + 1].StateImage[0].color = color;
+
+                color = level[currentLevel + 1].StateImage[1].color;
+                color.a = 0f;
+                level[currentLevel + 1].StateImage[1].color = color;
+
+                color = level[currentLevel + 1].StateImage[2].color;
+                color.a = 1f;
+                level[currentLevel + 1].StateImage[2].color = color;
+
+                expController.levelUpPoints -= 1;
+                currentLevel += 1;
+            }
+            else
+            {
+                Log.GetComponent<Text>().text = "Max level";
+                Log.GetComponent<Animator>().Play("AbilityOnCoolDown");
+            }
+            
         }
 
         public bool CheckAvailability()
         {
-            if (currentLevel == 0)
+            if(SkillChoosing)
             {
-                Log.GetComponent<Text>().text = "Ability not learned";
-                Log.GetComponent<Animator>().Play("AbilityOnCoolDown");
-                return false;
-            }
+                if (expController.levelUpPoints > 0)
+                    LearnChoosed();
 
-            if (OnCoolDown)
-            {
-                Log.GetComponent<Text>().text = "Ability on cooldown";
-                Log.GetComponent<Animator>().Play("AbilityOnCoolDown");
                 return false;
             }
             else
             {
-                OnCoolDown = true;
-                return true;
+                if (currentLevel == 0)
+                {
+                    Log.GetComponent<Text>().text = "Ability not learned";
+                    Log.GetComponent<Animator>().Play("AbilityOnCoolDown");
+                    return false;
+                }
+
+                if (OnCoolDown)
+                {
+                    Log.GetComponent<Text>().text = "Ability on cooldown";
+                    Log.GetComponent<Animator>().Play("AbilityOnCoolDown");
+                    return false;
+                }
+                else
+                {
+                    OnCoolDown = true;
+                    DrawUsedEffect();
+                    return true;
+                }
             }
-            
-                
+        }
+
+        public void DrawUsedEffect()
+        {
+            Color color = Used.color;
+            color.a = 1f;
+            Used.color = color;
+        }
+    }
+
+    [System.Serializable]
+    public class MultiDimensionalImage
+    {
+        public Image[] StateImage;
+    }
+
+    public void SkillLearning()
+    {
+        foreach (Skill skill in skills)
+        {
+            //skill.LearningOn();
+            skill.Learning = true;
+            skill.SkillChoosing = true;
+        }
+    }
+
+    public void SkillNotLearning()
+    {
+        foreach (Skill skill in skills)
+        {
+            if (skill.Learning == false && expController.levelUpPoints == 0)
+            {
+                foreach(Skill skill2 in skills)
+                {
+                    skill2.Learning = false;
+                    skill2.SkillChoosing = false;
+                }
+            }
         }
     }
 
@@ -222,6 +285,32 @@ public class Skills : MonoBehaviour
 
             skills[0].IsUsing = false;
             skills[0].currentTimeOfUsing = skills[0].timeOfUsing;
+        }
+    }
+    /*++++++++OVERPOWER END++++++++++++*/
+
+    /*+++++++++++OVERPOWER++++++++++++*/
+    public void Overpower2()
+    {
+        if (skills[1].CheckAvailability())
+        {
+            InvokeRepeating("CallTakeDamage2", 0f, 0.1f);
+            skills[1].IsUsing = true;
+        }
+    }
+
+    void CallTakeDamage2()
+    {
+        if (!enemyManager.enemyDead && skills[1].IsUsing)
+        {
+            enemyHealth.TakeDamage();
+        }
+        else if (!skills[1].IsUsing)
+        {
+            CancelInvoke();
+
+            skills[1].IsUsing = false;
+            skills[1].currentTimeOfUsing = skills[1].timeOfUsing;
         }
     }
     /*++++++++OVERPOWER END++++++++++++*/

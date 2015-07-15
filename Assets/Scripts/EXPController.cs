@@ -14,8 +14,9 @@ public class EXPController : MonoBehaviour
 
     public int levelUpPoints;
     public Button levelUpSkillButton;
-
-	// Use this for initialization
+    public int[] levelOfLevelUpPoints;
+	
+    // Use this for initialization
 	void Start ()
     {
         currentEXP = GameObject.Find("CurrentEXP").GetComponent<Text>();
@@ -26,6 +27,8 @@ public class EXPController : MonoBehaviour
         sliderEXP.maxValue = playerController.currentLevel * 10;
 
         currentEXP.text = sliderEXP.value + "/" + sliderEXP.maxValue;
+
+        levelUpPoints = 1;
     }
 	
 	// Update is called once per frame
@@ -34,6 +37,15 @@ public class EXPController : MonoBehaviour
         currentEXP.text = sliderEXP.value + "/" + sliderEXP.maxValue;
 
         currentLevelUpdate();
+
+        if (levelUpPoints > 0)
+        {
+            DrawLevelUpButton();
+        }
+        else
+        {
+            UndrawLevelUpButton();
+        }
 
         if (!enemyManager.enemyDead && !enemyManager.reborn)
             enemyHealth = GameObject.FindGameObjectWithTag("EnemyModel").GetComponent<EnemyHealth>();
@@ -45,7 +57,7 @@ public class EXPController : MonoBehaviour
         {
             sliderEXP.value = ((enemyHealth.maxHP / 10) - (sliderEXP.maxValue - sliderEXP.value));
             playerController.currentLevel += 1;
-            DrawLevelUpButton();
+            GiveLevelUpPoints();
             sliderEXP.maxValue = playerController.currentLevel * 10;
         }
         else
@@ -61,14 +73,33 @@ public class EXPController : MonoBehaviour
 
     public void DrawLevelUpButton()
     {
-        levelUpPoints += 1;
-
         Color color = levelUpSkillButton.image.color;
         color.a = 1f;
         levelUpSkillButton.image.color = color;
 
         levelUpSkillButton.GetComponentInChildren<Text>().text = "Level + " + levelUpPoints;
         levelUpSkillButton.interactable = true;
+    }
 
+    public void UndrawLevelUpButton()
+    {
+        Color color = levelUpSkillButton.image.color;
+        color.a = 0f;
+        levelUpSkillButton.image.color = color;
+
+        levelUpSkillButton.GetComponentInChildren<Text>().text = "";
+        levelUpSkillButton.interactable = false;
+    }
+
+    public void GiveLevelUpPoints()
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            if (playerController.currentLevel == levelOfLevelUpPoints[i])
+            {
+                levelUpPoints += 1;
+            }
+            
+        }
     }
 }
