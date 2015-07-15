@@ -9,61 +9,71 @@ public class Skills : MonoBehaviour
 
     EnemyManager enemyManager;
     EnemyHealth enemyHealth;
+    PlayerController playerController;
 
 	void Start () 
     {
         enemyManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyManager>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 	
 	void Update () 
     {
 	    if (!enemyManager.enemyDead)
             enemyHealth = GameObject.FindGameObjectWithTag("EnemyModel").GetComponent<EnemyHealth>();
-
-
 	}
 
     void FixedUpdate()
     {
-        foreach (Skill s in skills)
+        foreach (Skill skill in skills)
         {
-            if (s.currentTimeOfUsing <= 0)
+            if (skill.currentTimeOfUsing <= 0)
             {
-                s.IsUsing = false;
+                skill.IsUsing = false;
             }
 
-            if (s.currentCoolDown <= 0)
+            if (skill.currentCoolDown <= 0)
             {
-                s.OnCoolDown = false;
-                s.currentCoolDown = s.coolDown;
+                skill.OnCoolDown = false;
+                skill.currentCoolDown = skill.coolDown;
             }
 
-            if (s.IsUsing)
-                s.currentTimeOfUsing -= Time.deltaTime;
+            if (skill.IsUsing)
+                skill.currentTimeOfUsing -= Time.deltaTime;
 
-            if (s.OnCoolDown)
+            if (skill.OnCoolDown)
             {
-                s.currentCoolDown -= Time.deltaTime;
-                s.Blackout.fillAmount = s.currentCoolDown / s.coolDown;
+                skill.currentCoolDown -= Time.deltaTime;
+                skill.Blackout.fillAmount = skill.currentCoolDown / skill.coolDown;
 
-                Color color = s.Blackout.color;
+                Color color = skill.Blackout.color;
                 color.a = 0.6f;
-                s.Blackout.color = color;
+                skill.Blackout.color = color;
                 
-                color = s.BorderOnCoolDown.color;
-                color.a = 1;
-                s.BorderOnCoolDown.color = color;
+                color = skill.Border.color;
+                color.r = 0.5f;
+                color.g = 0.5f;
+                color.b = 0.5f;
+                skill.Border.color = color;
 
-                s.CoolDownText.text = Mathf.RoundToInt(s.currentCoolDown).ToString();
+                skill.CoolDownText.text = Mathf.RoundToInt(skill.currentCoolDown).ToString();
             }
             else
             {
-                Color color = s.BorderOnCoolDown.color;
-                color.a = 0;
-                s.BorderOnCoolDown.color = color;
+                Color color = skill.Border.color;
+                color.r = 1f;
+                color.g = 1f;
+                color.b = 1f;
+                skill.Border.color = color;
 
-                s.CoolDownText.text = "";
+                skill.CoolDownText.text = "";
             }
+
+            if (skill.Learning)
+            {
+                skill.LearningOn();
+            }
+
         }
         
     }
@@ -82,27 +92,109 @@ public class Skills : MonoBehaviour
         public Image IconHighlighted;
         public Image Slot;
         public Image Border;
-        public Image BorderOnCoolDown;
+        public List<Image> level1;
+        public List<Image> level2;
+        public List<Image> level3;
+        public List<Image> level4;
         public Text CoolDownText;
-        public GameObject SkillLog;
+        public GameObject Log;
 
         public bool OnCoolDown;
         public bool IsUsing;
+        public bool Learning;
+
+        public void LearningOn()
+        {
+            //level1
+            Color color = level1[0].color;
+            color.a = 0f;
+            level1[0].color = color;
+
+            color = level1[1].color;
+            color.a = 1f;
+            level1[1].color = color;
+
+            color = level1[2].color;
+            color.a = 0f;
+            level1[2].color = color;
+
+            //level2
+            color = level2[0].color;
+            color.a = 0f;
+            level2[0].color = color;
+
+            color = level2[1].color;
+            color.a = 1f;
+            level2[1].color = color;
+
+            color = level2[2].color;
+            color.a = 0f;
+            level2[2].color = color;
+
+            //level3
+            color = level3[0].color;
+            color.a = 0f;
+            level3[0].color = color;
+
+            color = level3[1].color;
+            color.a = 1f;
+            level3[1].color = color;
+
+            color = level3[2].color;
+            color.a = 0f;
+            level3[2].color = color;
+
+            //level4
+            color = level4[0].color;
+            color.a = 0f;
+            level4[0].color = color;
+
+            color = level4[1].color;
+            color.a = 1f;
+            level4[1].color = color;
+
+            color = level4[2].color;
+            color.a = 0f;
+            level4[2].color = color;
+        }
+
+        public void LearningOff()
+        {
+            Color color = level1[0].color;
+            color.a = 1f;
+            level1[0].color = color;
+
+            color = level1[1].color;
+            color.a = 0f;
+            level1[1].color = color;
+
+            color = level1[2].color;
+            color.a = 0f;
+            level1[2].color = color;
+        }
 
         public bool CheckAvailability()
         {
-            if (this.OnCoolDown)
+            if (currentLevel == 0)
             {
-                SkillLog.GetComponent<Animator>().Play("AbilityOnCoolDown");
+                Log.GetComponent<Text>().text = "Ability not learned";
+                Log.GetComponent<Animator>().Play("AbilityOnCoolDown");
+                return false;
+            }
+
+            if (OnCoolDown)
+            {
+                Log.GetComponent<Text>().text = "Ability on cooldown";
+                Log.GetComponent<Animator>().Play("AbilityOnCoolDown");
                 return false;
             }
             else
             {
-                this.OnCoolDown = true;
+                OnCoolDown = true;
                 return true;
             }
-
             
+                
         }
     }
 
@@ -116,9 +208,6 @@ public class Skills : MonoBehaviour
             InvokeRepeating("CallTakeDamage", 0f, 0.1f);
             skills[0].IsUsing = true;
         }
-
-        
-        
     }
 
     void CallTakeDamage()

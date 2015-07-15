@@ -12,6 +12,8 @@ public class EXPController : MonoBehaviour
     EnemyHealth enemyHealth;
     EnemyManager enemyManager;
 
+    public int levelUpPoints;
+    public Button levelUpSkillButton;
 
 	// Use this for initialization
 	void Start ()
@@ -43,6 +45,7 @@ public class EXPController : MonoBehaviour
         {
             sliderEXP.value = ((enemyHealth.maxHP / 10) - (sliderEXP.maxValue - sliderEXP.value));
             playerController.currentLevel += 1;
+            DrawLevelUpButton();
             sliderEXP.maxValue = playerController.currentLevel * 10;
         }
         else
@@ -54,5 +57,18 @@ public class EXPController : MonoBehaviour
     public void currentLevelUpdate()
     {
         currentLevelText.text = "Level " + playerController.currentLevel;
+    }
+
+    public void DrawLevelUpButton()
+    {
+        levelUpPoints += 1;
+
+        Color color = levelUpSkillButton.image.color;
+        color.a = 1f;
+        levelUpSkillButton.image.color = color;
+
+        levelUpSkillButton.GetComponentInChildren<Text>().text = "Level + " + levelUpPoints;
+        levelUpSkillButton.interactable = true;
+
     }
 }
