@@ -56,18 +56,18 @@ public class HealthBarController : MonoBehaviour
             healthText.text = Mathf.RoundToInt(enemyHealth.currentHealth) + " / " + Mathf.RoundToInt(enemyHealth.maxHP);
 
             //Локальные позиции полоски хп и бликов
-            healthTransform.localPosition = new Vector3(currentXHealthBar, 12, 5);
-            topBlickTransform.localPosition = new Vector3(currentXHealthBar, 12, 5);
-            leftBlickTransform.localPosition = new Vector3(currentXHealthBar, 12, 5);
+            healthTransform.localPosition = new Vector3(currentXHealthBar, 0, 5);
+            topBlickTransform.localPosition = new Vector3(currentXHealthBar, 0, 5);
+            leftBlickTransform.localPosition = new Vector3(currentXHealthBar, 0, 5);
         }
         else
         {
             healthText.text = 0 + " / " + 0;
 
             //Локальная позиция всегда равна минимальному значению
-            healthTransform.localPosition = new Vector3(minXHealthBar, 6, 5);
-            topBlickTransform.localPosition = new Vector3(minXHealthBar, 6, 5);
-            leftBlickTransform.localPosition = new Vector3(minXHealthBar, 6, 5);
+            healthTransform.localPosition = new Vector3(minXHealthBar, 0, 5);
+            topBlickTransform.localPosition = new Vector3(minXHealthBar, 0, 5);
+            leftBlickTransform.localPosition = new Vector3(minXHealthBar, 0, 5);
         }
     }
 

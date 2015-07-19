@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
         //Инициализация анимаций, ХПбара, мэнеджера, контроллера игрока...
         sliderEXP = GameObject.Find("EXPSlider").GetComponent<Slider>();
         anim = GameObject.FindGameObjectWithTag("EnemyModel").GetComponent<Animator>();
-        healthBarController = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBarController>();
+        
         enemyManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyManager>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         clickDamage = GameObject.Find("ClickDamageBox").GetComponent<ClickDamage>();
