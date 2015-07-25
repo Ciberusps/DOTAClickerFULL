@@ -32,10 +32,12 @@ public class Skills : MonoBehaviour
             if (skill.currentTimeOfUsing <= 0)
             {
                 skill.IsUsing = false;
-
+                /*
                 Color color = skill.Used.color;
                 color.a = 0f;
                 skill.Used.color = color;
+                */
+                skill.Used.gameObject.SetActive(false);
             }
 
             if (skill.currentCoolDown <= 0)
@@ -51,12 +53,14 @@ public class Skills : MonoBehaviour
             {
                 skill.currentCoolDown -= Time.deltaTime;
                 skill.Blackout.fillAmount = skill.currentCoolDown / skill.coolDown;
-
+                /*
                 Color color = skill.Blackout.color;
                 color.a = 0.6f;
                 skill.Blackout.color = color;
-                
-                color = skill.Border.color;
+                */
+                skill.Blackout.gameObject.SetActive(true);
+
+                Color color = skill.Border.color;
                 color.r = 0.5f;
                 color.g = 0.5f;
                 color.b = 0.5f;
@@ -119,7 +123,7 @@ public class Skills : MonoBehaviour
        {
             if (currentLevel < 4)
             {
-                Color color = level[currentLevel + 1].StateImage[0].color;
+                /*Color color = level[currentLevel + 1].StateImage[0].color;
                 color.a = 0f;
                 level[currentLevel + 1].StateImage[0].color = color;
 
@@ -134,6 +138,13 @@ public class Skills : MonoBehaviour
                 color = Learn.color;
                 color.a = 1f;
                 Learn.color = color;
+                */
+
+                level[currentLevel + 1].StateImage[0].gameObject.SetActive(false);
+                level[currentLevel + 1].StateImage[1].gameObject.SetActive(true);
+                level[currentLevel + 1].StateImage[2].gameObject.SetActive(false);
+
+                Learn.gameObject.SetActive(true);
             }
         }
 
@@ -141,7 +152,7 @@ public class Skills : MonoBehaviour
         {
             if (currentLevel < 4)
             {
-                Color color = level[currentLevel + 1].StateImage[0].color;
+                /*Color color = level[currentLevel + 1].StateImage[0].color;
                 color.a = 1f;
                 level[currentLevel + 1].StateImage[0].color = color;
 
@@ -156,6 +167,12 @@ public class Skills : MonoBehaviour
                 color = Learn.color;
                 color.a = 0f;
                 Learn.color = color;
+                */
+                level[currentLevel + 1].StateImage[0].gameObject.SetActive(true);
+                level[currentLevel + 1].StateImage[1].gameObject.SetActive(false);
+                level[currentLevel + 1].StateImage[2].gameObject.SetActive(false);
+
+                Learn.gameObject.SetActive(false);
             }
         }
 
@@ -165,7 +182,7 @@ public class Skills : MonoBehaviour
             {
                 SkillChoosing = false;
                 Learning = false;
-
+                /*
                 Color color = level[currentLevel + 1].StateImage[0].color;
                 color.a = 0f;
                 level[currentLevel + 1].StateImage[0].color = color;
@@ -177,6 +194,11 @@ public class Skills : MonoBehaviour
                 color = level[currentLevel + 1].StateImage[2].color;
                 color.a = 1f;
                 level[currentLevel + 1].StateImage[2].color = color;
+                */
+
+                level[currentLevel + 1].StateImage[0].gameObject.SetActive(false);
+                level[currentLevel + 1].StateImage[1].gameObject.SetActive(false);
+                level[currentLevel + 1].StateImage[2].gameObject.SetActive(true);
 
                 expController.levelUpPoints -= 1;
                 currentLevel += 1;
@@ -224,9 +246,10 @@ public class Skills : MonoBehaviour
 
         public void DrawUsedEffect()
         {
-            Color color = Used.color;
+            /*Color color = Used.color;
             color.a = 1f;
-            Used.color = color;
+            Used.color = color;*/
+            Used.gameObject.SetActive(true);
         }
     }
 
