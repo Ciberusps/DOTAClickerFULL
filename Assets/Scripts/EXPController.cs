@@ -6,27 +6,37 @@ public class EXPController : MonoBehaviour
 {
     //EnemyHealth enemyHealth;
     PlayerController playerController;
-    Text currentEXP;
+    /*Text currentEXP;
     Text currentLevelText;
-    Slider sliderEXP;
+    Slider sliderEXP;*/
+    [SerializeField] private UILabel currentEXPLabel;
+    [SerializeField] private UILabel currentLevelText;
+    [SerializeField] private UISlider sliderEXP;
+
     EnemyHealth enemyHealth;
     EnemyManager enemyManager;
 
     public int levelUpPoints;
     public Button levelUpSkillButton;
     public int[] levelOfLevelUpPoints;
-	
+
+    private float maxEXP, currentEXP;
+    
     // Use this for initialization
 	void Start ()
     {
-        currentEXP = GameObject.Find("CurrentEXP").GetComponent<Text>();
-        sliderEXP = GameObject.Find("EXPSlider").GetComponent<Slider>();
+        /*currentEXP = GameObject.Find("CurrentEXP").GetComponent<Text>();
+        sliderEXP = GameObject.Find("EXPSlider").GetComponent<Slider>();*/
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         enemyManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyManager>();
-        currentLevelText = GameObject.Find("CurrentLevel").GetComponent<Text>();
-        sliderEXP.maxValue = playerController.currentLevel * 10;
+        //        currentLevelText = GameObject.Find("CurrentLevel").GetComponent<Text>();
+        //        sliderEXP.maxValue = playerController.currentLevel * 10;
 
-        currentEXP.text = sliderEXP.value + "/" + sliderEXP.maxValue;
+	    maxEXP = playerController.currentLevel*10;
+	    currentEXP = 0;
+
+//        currentEXPLabel.text = sliderEXP.value + "/" + maxEXP;
+	    currentEXPLabel.text = currentEXP + "/" + maxEXP;
 
         levelUpPoints = 1;
     }
@@ -34,17 +44,19 @@ public class EXPController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        currentEXP.text = sliderEXP.value + "/" + sliderEXP.maxValue;
+//        currentEXPLabel.text = sliderEXP.value + "/" + maxEXP;
+        currentEXPLabel.text = currentEXP + "/" + maxEXP;
+
 
         currentLevelUpdate();
 
         if (levelUpPoints > 0)
         {
-            DrawLevelUpButton();
+//            DrawLevelUpButton();
         }
         else
         {
-            UndrawLevelUpButton();
+//            UndrawLevelUpButton();
         }
 
         if (!enemyManager.enemyDead && !enemyManager.reborn)
@@ -53,16 +65,18 @@ public class EXPController : MonoBehaviour
 
     public void ApplyEXP()
     {
-        if ((sliderEXP.value + enemyHealth.maxHP / 10) >= sliderEXP.maxValue)
+        if ((sliderEXP.value + enemyHealth.maxHP / 10) >= maxEXP)
         {
-            sliderEXP.value = ((enemyHealth.maxHP / 10) - (sliderEXP.maxValue - sliderEXP.value));
+            sliderEXP.value = ((enemyHealth.maxHP / 10) - (maxEXP - sliderEXP.value));
             playerController.currentLevel += 1;
             GiveLevelUpPoints();
-            sliderEXP.maxValue = playerController.currentLevel * 10;
+            maxEXP = playerController.currentLevel * 10;
         }
         else
         {
-            sliderEXP.value += enemyHealth.maxHP / 10;
+            currentEXP += enemyHealth.maxHP/10;
+
+            sliderEXP.value = currentEXP / maxEXP;
         }
     }
 

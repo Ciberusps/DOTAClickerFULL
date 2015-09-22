@@ -41,9 +41,87 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 589d510894299be4ea1270b42b866775, type: 2}
   mSprites:
-  - name: cursor_default
+  - name: actionpanel_i14d 1
+    x: 1571
+    y: 3591
+    width: 256
+    height: 256
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: actionpanel_i18
+    x: 1152
+    y: 3318
+    width: 128
+    height: 128
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: actionpanel_i1a
+    x: 1828
+    y: 3729
+    width: 118
+    height: 118
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 5
+    paddingTop: 5
+    paddingBottom: 5
+  - name: actionpanel_i1f
+    x: 1281
+    y: 3318
+    width: 128
+    height: 128
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: actionpanel_i52
     x: 1023
-    y: 3755
+    y: 3318
+    width: 128
+    height: 128
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: background_4_3
+    x: 1023
+    y: 3447
+    width: 547
+    height: 400
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 100
+    paddingBottom: 0
+  - name: cursor_default
+    x: 1539
+    y: 3414
     width: 30
     height: 32
     borderLeft: 0
@@ -55,8 +133,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: dayNight
-    x: 1023
-    y: 3788
+    x: 1571
+    y: 3334
     width: 254
     height: 256
     borderLeft: 0
@@ -67,9 +145,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: Gold_icon
+    x: 1023
+    y: 3300
+    width: 25
+    height: 17
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: healthbar
-    x: 1278
-    y: 4017
+    x: 2048
+    y: 4069
     width: 678
     height: 27
     borderLeft: 0
@@ -81,8 +172,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: healthbar 1
-    x: 1278
-    y: 3991
+    x: 2048
+    y: 4043
     width: 656
     height: 25
     borderLeft: 0
@@ -94,8 +185,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: healthbar2
-    x: 1278
-    y: 3932
+    x: 2048
+    y: 3984
     width: 655
     height: 25
     borderLeft: 0
@@ -106,9 +197,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
-  - name: topbar
+  - name: SkillBar
     x: 1023
-    y: 4045
+    y: 3848
+    width: 1024
+    height: 248
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 3
+    paddingBottom: 0
+  - name: topbar
+    x: 0
+    y: 3244
     width: 2048
     height: 51
     borderLeft: 0
@@ -120,8 +224,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: ui_healthbar_full
-    x: 1278
-    y: 3958
+    x: 2048
+    y: 4010
     width: 512
     height: 32
     borderLeft: 0
@@ -132,6 +236,32 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: ursa_overpower
+    x: 1410
+    y: 3318
+    width: 128
+    height: 128
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: ursa_overpowerHighlighted
+    x: 1947
+    y: 3768
+    width: 83
+    height: 79
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 7
   - name: Wooden Atlas
     x: 0
     y: 3296

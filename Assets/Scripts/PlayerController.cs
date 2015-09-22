@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public int EXP;
     public bool currentSide; //Текущая сторона radiant(dire)
 
-    public Text goldText; //Текст показывающий золото
+//    public Text goldText; //Текст показывающий золото
+    public UILabel goldLabel;
     EnemyManager enemyManager;
     ClickDamage clickDamage;
 
@@ -22,14 +23,15 @@ public class PlayerController : MonoBehaviour
         enemyManager = GameObject.Find("Enemy").GetComponent<EnemyManager>();
         clickDamage = GameObject.Find("ClickDamageBox").GetComponent<ClickDamage>();
 
-        goldText = GameObject.Find("GoldText").GetComponent<Text>();
+        //        goldText = GameObject.Find("GoldText").GetComponent<Text>();
+
         gold = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        goldText.text = gold.ToString();
+        goldLabel.text = gold.ToString();
     }
 
     public void GetGold(int goldValue)

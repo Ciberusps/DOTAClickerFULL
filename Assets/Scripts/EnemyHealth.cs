@@ -53,6 +53,7 @@ public class EnemyHealth : MonoBehaviour
             Destroy(temp, 0.4f);
 
             anim.SetTrigger("isIdle");
+            HealthBarController.instance.SetCurrentValue();
         }
 
 
